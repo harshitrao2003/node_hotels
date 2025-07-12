@@ -29,12 +29,15 @@
 
 
 // module.exports = db;
+
+
 // 1. Import Mongoose
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 // 2. Define the MongoDB connection URL
-const mongoURI = 'mongodb://localhost:27017/yourDatabaseName'; // Replace with your DB name
-
+//const mongoURL = process.env.MONGODB_URL_LOCAL; // Replace with your DB name
+const mongoURL =  process.env.MONGODB_URL;
 // 3. Set up connection options (optional but recommended)
 const options = {
   useNewUrlParser: true,
@@ -44,7 +47,7 @@ const options = {
 };
 
 // 4. Connect to MongoDB
-mongoose.connect(mongoURI, options)
+mongoose.connect(mongoURL, options)
   .then(() => {
     console.log('✅ MongoDB connected successfully!');
   })
